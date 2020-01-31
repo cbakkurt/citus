@@ -620,9 +620,14 @@ SELECT * FROM
 		a_inner)
 AS foo;
 
-DROP TABLE subquery_pruning_varchar_test_table;
-
 RESET citus.enable_router_execution;
+
+-- Test https://github.com/citusdata/citus/issues/3424
+WITH cte_1 AS (SELECT b max FROM subquery_pruning_varchar_test_table)
+SELECT a
+FROM subquery_pruning_varchar_test_table
+JOIN cte_1 ON a = max::text
+GROUP BY a HAVING a = (SELECT a);
 
 -- Simple join subquery pushdown
 SELECT
@@ -843,7 +848,7 @@ LIMIT
 -- also set the min messages to WARNING to skip
 -- CASCADE NOTICE messagez
 SET client_min_messages TO WARNING;
-DROP TABLE users, events;
+DROP TABLE users, events, subquery_pruning_varchar_test_table;
 
 DROP TYPE user_composite_type CASCADE;
 
