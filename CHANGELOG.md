@@ -14,7 +14,7 @@
 
 * Adds support for any inner join on a reference table
 
-* Adds support to `INSERT...SELECT` queries with re-partitioning
+* Adds support for `INSERT...SELECT` queries with re-partitioning
 
 * Changes `citus.log_remote_commands` level to `NOTICE`
 
