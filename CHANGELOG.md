@@ -26,7 +26,7 @@
 
 * Fixes Makefile trying to cleanup PG directory during install
 
-* Fixes a bug causing errors when planning a query with multiple subquerie
+* Fixes a bug causing errors when planning a query with multiple subqueries
 
 * Fixes a possible deadlock that could happen during shard moves
 
