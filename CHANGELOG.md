@@ -8,7 +8,7 @@
 
 * Adds propagation of `GRANT ... ON SCHEMA` queries
 
-* Adds support for CTE pushdown via CTE inlining in distributed planning 
+* Adds support for CTE pushdown via CTE inlining in distributed planning
 
 * Adds support for `ALTER TABLE ... SET SCHEMA` propagation.
 
