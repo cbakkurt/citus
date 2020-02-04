@@ -1,46 +1,46 @@
 ### citus v9.2.0 (February 4, 2020) ###
 
-* Fixes an issue that could cause joins with reference tables to be slow
-
-* Restricts LIMIT approximation for non-commutative aggregates
-
-* Enables local execution of queries that do not need any data access
-
-* Disallows placing new shards with shards in TO_DELETE state
-
-* Disallows marking ref. table shards unhealthy in the presence of savepoints
-
-* Adds propagation of `GRANT ... ON SCHEMA` queries
+* Adds `citus.coordinator_aggregation_strategy` to support more aggregates
 
 * Adds caching of local plans on shards for Citus MX
 
-* Adds support to `INSERT...SELECT` queries with re-partitioning
-
-* Fixes a bug causing errors when planning a query with multiple subquerie
-
 * Adds defering shard-pruning for fast-path router queries to execution
+
+* Adds propagation of `GRANT ... ON SCHEMA` queries
 
 * Adds support for `ALTER TABLE ... SET SCHEMA` propagation.
 
-* Fixes a problem when adding new node due to tables referenced in func body
-
-* Fixes a possible deadlock that could happen during shard moves
-
-* Fixes inserting multiple composite types as partition key in VALUES
-
-* Changes `citus.log_remote_commands` level to `NOTICE`
-
 * Adds support for `DROP ROUTINE` & `ALTER ROUTINE` commands
-
-* Adds `citus.coordinator_aggregation_strategy` to support more aggregates
-
-* Prevents wrong results for replicated partitioned tables after failure 
 
 * Adds support for any inner join on a reference table
 
+* Adds support to `INSERT...SELECT` queries with re-partitioning
+
+* Changes `citus.log_remote_commands` level to `NOTICE`
+
+* Disallows marking ref. table shards unhealthy in the presence of savepoints
+
+* Disallows placing new shards with shards in TO_DELETE state
+
+* Enables local execution of queries that do not need any data access
+
 * Fixes Makefile trying to cleanup PG directory during install
 
+* Fixes a bug causing errors when planning a query with multiple subquerie
+
+* Fixes a possible deadlock that could happen during shard moves
+
+* Fixes a problem when adding new node due to tables referenced in func body
+
+* Fixes an issue that could cause joins with reference tables to be slow
+
 * Fixes cached metadata for shard is inconsistent issue
+
+* Fixes inserting multiple composite types as partition key in VALUES
+
+* Prevents wrong results for replicated partitioned tables after failure 
+
+* Restricts LIMIT approximation for non-commutative aggregates
 
 ### citus v9.1.2 (December 30, 2019) ###
 
