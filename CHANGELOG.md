@@ -38,7 +38,7 @@
 
 * Fixes inserting multiple composite types as partition key in VALUES
 
-* Prevents wrong results for replicated partitioned tables after failure 
+* Prevents wrong results for replicated partitioned tables after failure
 
 * Restricts LIMIT approximation for non-commutative aggregates
 
