@@ -30,7 +30,7 @@
 
 * Fixes a possible deadlock that could happen during shard moves
 
-* Fixes a problem when adding new node due to tables referenced in func body
+* Fixes a problem when adding a new node due to tables referenced in func body
 
 * Fixes an issue that could cause joins with reference tables to be slow
 
