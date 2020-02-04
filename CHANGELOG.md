@@ -8,13 +8,15 @@
 
 * Adds propagation of `GRANT ... ON SCHEMA` queries
 
+* Adds support for CTE pushdown via CTE inlining in distributed planning 
+
 * Adds support for `ALTER TABLE ... SET SCHEMA` propagation.
 
 * Adds support for `DROP ROUTINE` & `ALTER ROUTINE` commands
 
-* Adds support for any inner join on a reference table
-
 * Adds support for `INSERT...SELECT` queries with re-partitioning
+
+* Adds support for any inner join on a reference table
 
 * Changes `citus.log_remote_commands` level to `NOTICE`
 
