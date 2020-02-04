@@ -2,45 +2,43 @@
 
 * Fixes an issue that could cause joins with reference tables to be slow
 
-* Fix pushing down aggregates we do not support partial aggregation for while row-gather is enabled in queries which are grouped by a partition column
+* Restricts LIMIT approximation for non-commutative aggregates
 
-* restrict LIMIT approximation for non commutative aggregates
+* Enables local execution of queries that do not need any data access
 
-* Locally execute queries that don't need any data access
+* Disallows placing new shards with shards in TO_DELETE state
 
-* Do not place new shards with shards in TO_DELETE stat
+* Disallows marking ref. table shards unhealthy in the presence of savepoints
 
-* avoid marking reference table shards unhealthy in the presence of savepoints
+* Adds propagation of `GRANT ... ON SCHEMA` queries
 
-* Adds propagation of GRANT ... ON SCHEMA querie
+* Adds caching of local plans on shards for Citus MX
 
-* Cache local plans on shards for Citus MX
+* Adds support to `INSERT...SELECT` queries with re-partitioning
 
-* INSERT...SELECT with re-partitioning
+* Fixes a bug causing errors when planning a query with multiple subquerie
 
-* Fix bug causing errors when planning a query with multiple subquerie
+* Adds defering shard-pruning for fast-path router queries to execution
 
-* Defer shard pruning for fast-path router queries to execution
+* Adds support for `ALTER TABLE ... SET SCHEMA` propagation.
 
-* Adds support for ALTER TABLE ... SET SCHEMA propagation.
+* Fixes a problem when adding new node due to tables referenced in func body
 
-* Fixes a problem when adding a new node due to tables referenced in a functions body
+* Fixes a possible deadlock that could happen during shard moves
 
-* Fix for deadlock that could happen during shard moves
+* Fixes inserting multiple composite types as partition key in VALUES
 
-* Fix inserting multiple composite types as partition key in VALUES
+* Changes `citus.log_remote_commands` level to `NOTICE`
 
-* Changes the citus.log_remote_commands level to NOTICE
+* Adds support for `DROP ROUTINE` & `ALTER ROUTINE` commands
 
-* Support `DROP ROUTINE` & `ALTER ROUTINE` the same way we support `DROP FUNCTION` & `ALTER FUNCTION`
+* Adds `citus.coordinator_aggregation_strategy` to support more aggregates
 
-* `SET citus.coordinator_aggregation_strategy to 'row-gather'` will enable pulling up intermediate rows to the coordinator for unsupported aggregates
+* Prevents wrong results for replicated partitioned tables after failure 
 
-* Prevent wrong results for replicated partitioned tables after failure 
+* Adds support for any inner join on a reference table
 
-* Support any inner join on a reference table
-
-* Fix Makefile trying to cleanup PG directory during install
+* Fixes Makefile trying to cleanup PG directory during install
 
 * Fixes cached metadata for shard is inconsistent issue
 
