@@ -1,3 +1,49 @@
+### citus v9.2.0 (February 4, 2020) ###
+
+* Fixes an issue that could cause joins with reference tables to be slow
+
+* Fix pushing down aggregates we do not support partial aggregation for while row-gather is enabled in queries which are grouped by a partition column
+
+* restrict LIMIT approximation for non commutative aggregates
+
+* Locally execute queries that don't need any data access
+
+* Do not place new shards with shards in TO_DELETE stat
+
+* avoid marking reference table shards unhealthy in the presence of savepoints
+
+* Adds propagation of GRANT ... ON SCHEMA querie
+
+* Cache local plans on shards for Citus MX
+
+* INSERT...SELECT with re-partitioning
+
+* Fix bug causing errors when planning a query with multiple subquerie
+
+* Defer shard pruning for fast-path router queries to execution
+
+* Adds support for ALTER TABLE ... SET SCHEMA propagation.
+
+* Fixes a problem when adding a new node due to tables referenced in a functions body
+
+* Fix for deadlock that could happen during shard moves
+
+* Fix inserting multiple composite types as partition key in VALUES
+
+* Changes the citus.log_remote_commands level to NOTICE
+
+* Support `DROP ROUTINE` & `ALTER ROUTINE` the same way we support `DROP FUNCTION` & `ALTER FUNCTION`
+
+* `SET citus.coordinator_aggregation_strategy to 'row-gather'` will enable pulling up intermediate rows to the coordinator for unsupported aggregates
+
+* Prevent wrong results for replicated partitioned tables after failure 
+
+* Support any inner join on a reference table
+
+* Fix Makefile trying to cleanup PG directory during install
+
+* Fixes cached metadata for shard is inconsistent issue
+
 ### citus v9.1.2 (December 30, 2019) ###
 
 * Fixes a bug that prevents installation from source
