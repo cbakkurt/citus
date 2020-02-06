@@ -1,0 +1,53 @@
+-- drop objects from previous test (uprade_basic_after.sql) for a clean test
+-- drop upgrade_basic schema and switch back to public schema
+SET search_path to public;
+DROP SCHEMA upgrade_basic CASCADE;
+NOTICE:  drop cascades to 7 other objects
+DETAIL:  drop cascades to table upgrade_basic.t
+drop cascades to table upgrade_basic.tp
+drop cascades to table upgrade_basic.t_ab
+drop cascades to table upgrade_basic.t2
+drop cascades to table upgrade_basic.r
+drop cascades to table upgrade_basic.tr
+drop cascades to table upgrade_basic.t_append
+-- as we updated citus to available version,
+--   "isn" extension
+--   "new_schema" schema
+--   "public" schema
+-- will now be marked as distributed
+-- but,
+--   "seg" extension
+-- will not be marked as distributed
+-- 3 items
+SELECT count(*) from citus.pg_dist_object;
+ count
+---------------------------------------------------------------------
+     3
+(1 row)
+
+ --1
+ SELECT count(*) from citus.pg_dist_object where objid=(select oid from pg_extension where extname='isn');
+ count
+---------------------------------------------------------------------
+      1
+ (1 row)
+
+ SELECT count(*) from citus.pg_dist_object where objid=(SELECT 'new_schema'::regnamespace::oid);
+ count
+---------------------------------------------------------------------
+      1
+ (1 row)
+
+ SELECT count(*) from citus.pg_dist_object where objid=(SELECT 'public'::regnamespace::oid);
+ count
+---------------------------------------------------------------------
+      1
+ (1 row)
+
+ -- 0
+ SELECT count(*) from citus.pg_dist_object where objid=(select oid from pg_extension where extname='seg');
+ count
+---------------------------------------------------------------------
+     0
+(1 row)
+

@@ -81,6 +81,8 @@ extern List * PostprocessAlterExtensionSchemaStmt(Node *stmt,
 												  const char *queryString);
 extern List * PreprocessAlterExtensionUpdateStmt(Node *stmt,
 												 const char *queryString);
+extern void PostprocessAlterExtensionCitusUpdateStmt(Node *node, bool
+													 citusCanBeUpdatedToAvailableVersion);
 extern List * PreprocessAlterExtensionContentsStmt(Node *node,
 												   const char *queryString);
 extern List * CreateExtensionDDLCommand(const ObjectAddress *extensionAddress);
